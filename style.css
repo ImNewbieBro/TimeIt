@@ -1,0 +1,112 @@
+/*color palette
+primary : #1e1e1e
+Secondary : #292d29
+accent : #a8c66c
+
+text
+gray : #a8a59c stroke: #3a3a38
+white : #f2f0e8
+*/
+
+body {
+    background-color: #1e1e1e;
+    margin: 0rem;
+}
+
+h1 {
+    margin: 0.5rem;
+}
+
+h2 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4rem;
+    color: #f2f0e8;
+        text-shadow: -1px -1px 0 #3a3a38, 
+                 1px -1px 0 #3a3a38,
+                 -1px 1px 0 #3a3a38,
+                 1px 1px 0 #3a3a38,
+                 -1px 0px 0 #3a3a38,
+                 1px 0px 0 #3a3a38,
+                 0px -1px 0 #3a3a38,
+                 0px 1px 0 #3a3a38;
+}
+
+h3 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    color: #a8a59c;
+    text-shadow: -1px -1px 0 #3a3a38, 
+                 1px -1px 0 #3a3a38,
+                 -1px 1px 0 #3a3a38,
+                 1px 1px 0 #3a3a38,
+                 -1px 0px 0 #3a3a38,
+                 1px 0px 0 #3a3a38,
+                 0px -1px 0 #3a3a38,
+                 0px 1px 0 #3a3a38;
+}
+
+button {
+    background-color: #1e1e1e;
+    padding: 0.4rem;
+    border: solid, #a8c66c;
+    border-radius: 0.4rem;
+    border-width: 0.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.15rem;
+    color: #f2f0e8;
+    text-shadow: -1px -1px 0 #3a3a38, 
+                 1px -1px 0 #3a3a38,
+                 -1px 1px 0 #3a3a38,
+                 1px 1px 0 #3a3a38,
+                 -1px 0px 0 #3a3a38,
+                 1px 0px 0 #3a3a38,
+                 0px -1px 0 #3a3a38,
+                 0px 1px 0 #3a3a38;
+}
+
+/*Navigation up top*/
+.nav-section {
+    background-color: #292d29;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 0.2rem solid #a8c66c;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    color: #f2f0e8;
+    text-shadow: -1px -1px 0 #1e1e1e, 
+                 1px -1px 0 #1e1e1e,
+                 -1px 1px 0 #1e1e1e,
+                 1px 1px 0 #1e1e1e,
+                 -1px 0px 0 #1e1e1e,
+                 1px 0px 0 #1e1e1e,
+                 0px -1px 0 #1e1e1e,
+                 0px 1px 0 #1e1e1e;
+    
+}
+
+.link-menu {
+    display: flex;
+    flex-direction: row;
+    margin-right: 1.5rem;
+    gap: 4rem;
+    padding: 1rem;
+}
+
+.hook {
+    margin: 1rem;
+    padding: 2rem;
+    
+}
