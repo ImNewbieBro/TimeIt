@@ -17,10 +17,10 @@ h1 {
     margin: 0.5rem;
 }
 
-h2 {
+.h2-hook {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 4rem;
+    font-size: 3rem;
     color: #f2f0e8;
         text-shadow: -1px -1px 0 #3a3a38, 
                  1px -1px 0 #3a3a38,
@@ -32,9 +32,9 @@ h2 {
                  0px 1px 0 #3a3a38;
 }
 
-h3 {
+.h3-hook {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 2rem;
     color: #a8a59c;
     text-shadow: -1px -1px 0 #3a3a38, 
@@ -53,10 +53,10 @@ button {
     border: solid, #a8c66c;
     border-radius: 0.4rem;
     border-width: 0.2rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "JetBrains Mono", monospace;
     text-align: center;
-    font-size: 2rem;
-    letter-spacing: 0.15rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.05rem;
     color: #f2f0e8;
     text-shadow: -1px -1px 0 #3a3a38, 
                  1px -1px 0 #3a3a38,
@@ -66,6 +66,18 @@ button {
                  1px 0px 0 #3a3a38,
                  0px -1px 0 #3a3a38,
                  0px 1px 0 #3a3a38;
+}
+button:hover {
+    background-color: #a8c66c;
+    color: #292d29;
+        text-shadow: -1px -1px 0 #f2f0e8, 
+                 1px -1px 0 #f2f0e8,
+                 -1px 1px 0 #f2f0e8,
+                 1px 1px 0 #f2f0e8,
+                 -1px 0px 0 #f2f0e8,
+                 1px 0px 0 #f2f0e8,
+                 0px -1px 0 #f2f0e8,
+                 0px 1px 0 #f2f0e8;
 }
 
 /*Navigation up top*/
@@ -81,7 +93,8 @@ button {
 .logo {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 0.5rem;
+    font-family: "JetBrains Mono", monospace;
     text-align: center;
     font-size: 1rem;
     letter-spacing: 0.1rem;
@@ -96,17 +109,87 @@ button {
                  0px 1px 0 #1e1e1e;
     
 }
+.logo:hover {
+    color: #a8c66c;
+}
 
 .link-menu {
     display: flex;
     flex-direction: row;
     margin-right: 1.5rem;
-    gap: 4rem;
+    gap: 3rem;
     padding: 1rem;
 }
 
+/* For body*/
 .hook {
     margin: 1rem;
     padding: 2rem;
+    font-family: "JetBrains Mono", monospace;
     
+}
+.hook:hover {
+    size: 2rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #292d29;
+    display: flex;
+    flex-direction: row;
+    padding-top: 0.5rem;
+}
+
+.footer-section--1 {
+    background-color: #292d29;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+}
+
+.quotes-title {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #a8c66c;
+    font-family: "JetBrains Mono", monospace;
+    text-align: left;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    color: #f2f0e8;
+}
+
+.quotes-main {
+    display: flex;
+    flex-direction: row;
+    font-family: "JetBrains Mono", monospace;
+    text-align: left;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    color: #f2f0e8;
+}
+
+.quote {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    font-size: 2rem;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column;
+    font-family: "JetBrains Mono", monospace;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    font-size: 2rem;
+    color: #f2f0e8;
 }
