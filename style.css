@@ -11,6 +11,7 @@ white : #f2f0e8
 body {
     background-color: #1e1e1e;
     margin: 0rem;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -22,7 +23,7 @@ h2{
 
 .h2-hook {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 3rem;
     color: #f2f0e8;
         text-shadow: -1px -1px 0 #3a3a38, 
@@ -36,6 +37,9 @@ h2{
 }
 
 .h3-hook {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
     text-align: center;
     font-family: "JetBrains Mono", monospace;
     font-size: 2rem;
@@ -112,9 +116,6 @@ button:hover {
                  0px 1px 0 #1e1e1e;
     
 }
-.logo:hover {
-    color: #a8c66c;
-}
 
 .link-menu {
     display: flex;
@@ -124,15 +125,56 @@ button:hover {
     padding: 1rem;
 }
 
+.nav-btn {
+    cursor: pointer;
+}
+
 /* For body*/
+.main {
+    width: auto;
+    height: 35rem;
+}
+
 .hook {
-    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*margin: 2rem 1rem 20rem 1rem;*/
     padding: 2rem;
     font-family: "JetBrains Mono", monospace;
     
 }
-.hook:hover {
-    size: 2rem;
+.meme-clock {
+    display: flex;
+    opacity: 0;
+    margin-left: auto;
+    margin-top: 0.5rem;
+    transform-origin: right center;
+    transition-property: transform opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+}
+
+.hook:hover .h2-hook,
+.hook:hover .h3-hook {
+    transform: scale(1.5);
+}
+.hook:hover .h2-hook {
+    transform: scale(1.5);
+    margin-top: 2rem;
+    color: #a8c66c;
+    text-shadow: -1px -1px 0 #1e1e1e, 
+                 1px -1px 0 #1e1e1e,
+                 -1px 1px 0 #1e1e1e,
+                 1px 1px 0 #1e1e1e,
+                 -1px 0px 0 #1e1e1e,
+                 1px 0px 0 #1e1e1e,
+                 0px -1px 0 #1e1e1e,
+                 0px 1px 0 #1e1e1e;
+}
+.hook:hover ~ .meme-clock {
+    opacity: 1;
+    transform: scale(8.5);
 }
 
 /* Footer */
@@ -141,7 +183,6 @@ button:hover {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
-    padding-top: 0.5rem;
 }
 
 .footer-section--1 {
@@ -150,9 +191,9 @@ button:hover {
     flex: 0 0 55%;
     flex-direction: column;
     flex-wrap: wrap;*/
-    width: 60%;
+    width: 70%;
     position: relative;
-    padding: 0.5rem 3rem 0rem 0rem;
+    padding: 0rem 3rem 0rem 0rem;
     margin-left: 1rem;
 }
 
@@ -171,8 +212,9 @@ button:hover {
     display: flex;
     /*flex: 0 0 35%;*/
     flex-direction: row;
+    align-items: center;
     width: 40%;
-    padding: 0.5rem 0rem 0rem 1.5rem;
+    padding: 0rem 0rem 0rem 1.5rem;
     border-right: 2px solid #3a3a38;
 }
 
@@ -202,7 +244,8 @@ button:hover {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    font-size: 1.3rem;
+    font-size: 1.45rem;
+    font-weight: 600;
     position: relative;
     margin: 0.5rem 0rem 0rem 0rem;
 }
@@ -222,6 +265,7 @@ button:hover {
 }
 
 .social-media {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -241,4 +285,99 @@ button:hover {
     margin: 0.5rem;
     font-size: 2rem;
     color: #f2f0e8;
+}
+
+.me {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    height: fit-content;
+    margin-top: 0.5rem;
+    transform-origin: left center;
+    transition-property: transform opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+}
+
+.social-media:hover ~ .me {
+    transform: scale(6);
+    opacity: 1;
+}
+
+
+
+/* For Config Page */
+.config {
+    background-color: #1e1e1e;
+}
+
+.main-config {
+    width: auto;
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.metadata {
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrains Mono", monospace;
+    text-align: center;
+    gap: 2rem;
+    width: 35rem;
+    padding: 1rem 1rem 1rem 1rem;
+    border: solid, #a8c66c;
+    border-width: 0.2rem;
+    border-radius: 0.4rem;
+    margin: 2rem;
+}
+.metadata-title {
+    width: 32rem;
+    margin: 0rem 0rem 0.5rem 0rem;
+    border-bottom-width: 0.15rem;
+    border-bottom-style: solid;
+    border-bottom-color: #3a3a38;
+    text-align: center;
+    font-size: 2.4rem;
+    color: #f2f0e8;
+    text-shadow: -1px -1px 0 #3a3a38, 
+                 1px -1px 0 #3a3a38,
+                 -1px 1px 0 #3a3a38,
+                 1px 1px 0 #3a3a38,
+                 -1px 0px 0 #3a3a38,
+                 1px 0px 0 #3a3a38,
+                 0px -1px 0 #3a3a38,
+                 0px 1px 0 #3a3a38;
+}
+
+.ipaddress {
+    color: #a8c66c;
+    text-align: left;
+    font-size: 1.4rem;
+    color: #f2f0e8;
+    text-shadow: -1px -1px 0 #3a3a38, 
+                 1px -1px 0 #3a3a38,
+                 -1px 1px 0 #3a3a38,
+                 1px 1px 0 #3a3a38,
+                 -1px 0px 0 #3a3a38,
+                 1px 0px 0 #3a3a38,
+                 0px -1px 0 #3a3a38,
+                 0px 1px 0 #3a3a38;
+}
+
+.sync-btn {
+    cursor: pointer;
+}
+
+
+
+
+table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
