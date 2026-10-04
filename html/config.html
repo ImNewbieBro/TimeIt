@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js" defer></script>
+    <title>TimeIt!</title>
+</head>
+<body class="config">
+    <div class="nav-section">
+        <div class="logo">
+        <h1>Time<br>It!</h1>
+        </div>
+        <div class="link-menu">
+            <button class="nav-btn" target="../html/visualize.html">VisualizeIt!</button>
+            <button class="nav-btn" target="../html/index.html">Home!</button>
+        </div>
+    </div>
+
+    <div class="main-config">
+        <div class="metadata">
+            <h1 class="metadata-title">Server</h1>
+            <div class="ipaddress metadata-info">
+                <span>IP Address </span> 
+                <span id="show-ip"></span>
+            </div>
+            <div class="port metadata-info">
+                <span>Port </span>
+                <span id="show-port"></span>
+            </div>
+        </div>
+        <div class="settings">
+            <div class="theme">
+                <span>Dark mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle" checked> 
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="language">
+                <span>Language</span>
+                <div class="custom-dropdown" id="langDropdown">
+                    <div class="dropdown-selected">English</div>
+                    <ul class="dropdown-options">
+                        <li data-value="en" class="active">English</li>
+                        <li data-value="id">Indonesia</li>
+                        <li data-value="jp">日本語</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sync">
+            <button class="sync-btn">SyncIt!</button>
+            <div class="sync-overlay">
+                <span class="sync-text">
+                    Note : 
+                </span>
+                <div class="upload">
+ 
+                </div>
+                <div class="download">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="footer-section--1">
+            <div class="quotes-title">
+                <h1>Dear Basketbal</h1>
+            </div>
+            <div class="quotes-main">
+                <h2 class="quote quote-border">
+                    From the moment I started
+                    this integration, I knew
+                    that this one is real.
+                </h2>
+                <h2 class="quote">
+                    I gave you my all,
+                    from my mind and body,
+                    to my spirit and soul.
+                </h2>
+            </div>
+        </div>
+
+        <div class="footer-section--2">
+            <div class="social-media" data-url="https://github.com/ImNewbieBro">
+                <img src="../img/GitHub_logo.svg" alt="github-logo" width="150" height="150">
+                <h2>ImNewbieBro</h2>
+            </div>
+            <div class="me">
+                <img class="me-img" src="../img/image-me.png" alt="ME??" height="30" width="50">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!--
+For data.json
+contains:
+tag -> study & learn, hobby, others
+sub-tag -> study & learn : math, phy, chm, network, etc.
+-->
