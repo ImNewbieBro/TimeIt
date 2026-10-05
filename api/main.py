@@ -7,7 +7,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from pydantic import BaseModel
-from api.routers import metadata
+from api.routers import metadata, tags
 
 app = FastAPI(title="ClockIt!-api")
 
@@ -20,6 +20,7 @@ app.add_middleware(
 )
 
 app.include_router(metadata.ap)
+app.include_router(tags.tag)
 
 @app.get('/status')
 def running():
