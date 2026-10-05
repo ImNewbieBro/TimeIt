@@ -1,9 +1,3 @@
-const portElement = document.getElementById('show-port')
-if (portElement) {
-  const port = window.location.port
-  document.getElementById('show-port').innerText = port;
-}
-
 const navBtns = document.querySelectorAll('.nav-btn');
 const socialMedia = document.querySelectorAll('.social-media')
 
@@ -11,7 +5,6 @@ const socialMedia = document.querySelectorAll('.social-media')
 navBtns.forEach(button => {
     button.addEventListener('click', () => {
         const page = button.getAttribute('target')
-        console.log(page)
         window.location.href = page;
     });
 });
@@ -25,6 +18,7 @@ socialMedia.forEach(button => {
         }
     });
 });
+
 
 
 // Experiment
