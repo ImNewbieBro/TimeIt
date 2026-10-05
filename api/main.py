@@ -1,5 +1,6 @@
 import os
 import json
+import time
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -20,7 +21,7 @@ app.add_middleware(
 
 app.include_router(metadata.ap)
 
-@app.get('/')
+@app.get('/status')
 def running():
     return {"FastAPI is running!"}
 
@@ -30,7 +31,7 @@ app.mount("/css", StaticFiles(directory=BASE_DIR / "css"), name="css")
 app.mount("/js", StaticFiles(directory=BASE_DIR / "js"), name="js")
 app.mount("/img", StaticFiles(directory=BASE_DIR / "img"), name="img")
 
-@app.get('/dashboard')
+@app.get('/' or '/dashboard')
 def dashboard() :
     return FileResponse(BASE_DIR / "html" / "index.html")
 

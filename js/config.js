@@ -1,6 +1,39 @@
 const navBtns = document.querySelectorAll('.nav-btn');
 const socialMedia = document.querySelectorAll('.social-media')
 
+document.addEventListener('DOMContentLoaded', () => {
+  fetchMetadataServ();
+});
+
+async function fetchMetadataServ () {
+  const ipSpan = document.getElementById('show-ip');
+  const portSpan = document.getElementById('show-port');
+
+  // Fetch IP Address
+  try {
+    const response = await fetch('/api/metadata/ip');
+    if (!response.ok) throw new Error("Failed to load");
+
+    const data = await response.json();
+    ipSpan.innerText = data.ip; 
+  } catch (error) {
+    console.error('Error fetching IP : ', error);
+    ipSpan.innerText = 'Error';
+  }
+
+  // Fetch Port
+    try {
+    const response = await fetch('/api/metadata/port');
+    if (!response.ok) throw new Error("Failed to load");
+
+    const data = await response.json();
+    portSpan.innerText = data.port; 
+  } catch (error) {
+    console.error('Error fetching IP : ', error);
+    portSpan.innerText = 'Error';
+  }
+}
+
 // Nav-button func
 navBtns.forEach(button => {
     button.addEventListener('click', () => {
