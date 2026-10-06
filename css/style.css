@@ -94,7 +94,9 @@ button:hover {
                  0px 1px 0 #f2f0e8;
 }
 
-/*Navigation up top*/
+/* =============
+Navigation up top
+============== */
 .nav-section {
     background-color: #292d29;
     display: flex;
@@ -136,7 +138,9 @@ button:hover {
     cursor: pointer;
 }
 
-/* For body*/
+/* =========
+index.html
+========= */
 .main {
     width: auto;
     height: 35rem;
@@ -184,7 +188,9 @@ button:hover {
     transform: scale(8);
 }
 
-/* Footer */
+/* ===
+Footer 
+===== */
 .footer {
     background-color: #292d29;
     display: flex;
@@ -194,10 +200,6 @@ button:hover {
 
 .footer-section--1 {
     background-color: #292d29;
-    /*display: flex;
-    flex: 0 0 55%;
-    flex-direction: column;
-    flex-wrap: wrap;*/
     width: 70%;
     position: relative;
     padding: 0rem 3rem 0rem 0rem;
@@ -313,7 +315,9 @@ button:hover {
 
 
 
-/* For Config Page */
+/* ========
+config.html
+========= */
 .config {
     background-color: #1e1e1e;
 }
@@ -472,7 +476,7 @@ input:checked + .slider:before {
     background-color: #f2f0e8;
 }
 
-/* Test */
+/* Language dropdown */
 .custom-dropdown {
     position: relative;
     width: 135px;
@@ -557,7 +561,10 @@ body.light-theme .dropdown-options {
     border-color: #a8a59c;
 }
 
-/* Tags section */
+
+/* =========
+Tags section 
+========= */
 .tags {
     background-color: #1e1e1e;
     display: flex;
@@ -623,6 +630,9 @@ body.light-theme .dropdown-options {
     font-size: 1.2rem;
     letter-spacing: 0.05rem;
 }
+
+
+
 
 /* SyncIt! */
 .sync-btn {
