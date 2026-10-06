@@ -121,3 +121,53 @@ options.forEach(option => {
 document.addEventListener('click', () => {
   dropdown.classList.remove('open');
 });
+
+
+const inputTag = document.querySelector('#input-tag');
+const addBtn = document.querySelector('.add-btn');
+const delBtn = document.querySelector('.del-btn');
+const tableBody = document.getElementById('table-body');
+const checkAll = document.getElementById('check-all');
+
+/*
+async function fetchAndRenderTags() {
+  try {
+    const response = await fetch('/api/data/tags');
+    if (!response.ok) throw new Error("Cannot load data");
+
+    const tags = await response.json();
+    
+    tableBody.innerHTML = '';
+    tags.forEach((tag, index) => {
+
+    })
+  }
+}*/
+
+addBtn.addEventListener('click', async () => {
+  const tagValue = inputTag.value.trim();
+  if (tagValue === '') return alert("Can't be empty");
+
+  try {
+    const response = await fetch('/api/data/tags', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        tagName: tagValue
+      })
+    });
+
+  if (!response.ok) {
+    throw new Error(`Failed: ${response.status}`);
+  }
+
+  inputTag.value = '';
+
+  } catch (error) {
+    console.error("Something went wrong! ", error);
+  }
+});
+
+delBtn.addEventListener('click', async () => {
+  
+})

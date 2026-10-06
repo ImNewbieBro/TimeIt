@@ -32,7 +32,8 @@ app.mount("/css", StaticFiles(directory=BASE_DIR / "css"), name="css")
 app.mount("/js", StaticFiles(directory=BASE_DIR / "js"), name="js")
 app.mount("/img", StaticFiles(directory=BASE_DIR / "img"), name="img")
 
-@app.get('/' or '/dashboard')
+@app.get('/')
+@app.get('/dashboard')
 def dashboard() :
     return FileResponse(BASE_DIR / "html" / "index.html")
 

@@ -320,7 +320,7 @@ button:hover {
 
 .main-config {
     width: auto;
-    height: 35rem;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -344,7 +344,7 @@ button:hover {
     margin: 2rem;
 }
 
-.metadata-title {
+.metadata-title, .preferences-title, .tags-title, .sub-tag-title {
     align-self: center;
     width: 25rem;
     margin: 0rem 0rem 0.5rem 0rem;
@@ -389,8 +389,8 @@ button:hover {
 }
 
 
-/* Setting Section */
-.settings {
+/* Preferences Section */
+.preferences {
     background-color: #1e1e1e;
     display: flex;
     flex-direction: column;
@@ -555,6 +555,73 @@ input:checked + .slider:before {
 body.light-theme .dropdown-selected,
 body.light-theme .dropdown-options {
     border-color: #a8a59c;
+}
+
+/* Tags section */
+.tags {
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: "JetBrains Mono", monospace;
+    text-align: center;
+    gap: 1.25rem;
+    width: 30rem;
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+    border: solid, #a8c66c;
+    border-width: 0.2rem;
+    border-radius: 0.4rem;
+    margin: 2rem;
+}
+
+.main-tag {
+    display: grid;
+    grid-template-columns: 16rem 1fr 1fr;
+    text-align: left;
+    gap: 1.5rem;
+}
+
+#input-tag {
+    height: 1.5rem;
+    width: 10rem;
+    padding: 0.5rem;
+    background-color: #292d29;
+    font-size: 1rem;
+    color: #f2f0e8;
+    border: solid 0.15rem #3a3a38;
+    border-radius: 0.6rem;
+    font-family: inherit;
+    transition: all 0.2s ease-in-out;
+}
+#input-tag:focus {
+    outline: none;
+    border-color: #a8c66c;
+}
+
+.add-tag {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    column-gap: 0.5rem;
+    font-size: 1.4rem;
+    color: #f2f0e8;
+    text-shadow: -1px -1px 0 #3a3a38, 
+                1px -1px 0 #3a3a38,
+                -1px 1px 0 #3a3a38,
+                1px 1px 0 #3a3a38,
+                -1px 0px 0 #3a3a38,
+                1px 0px 0 #3a3a38,
+                0px -1px 0 #3a3a38,
+                0px 1px 0 #3a3a38;   
+}
+
+.add-btn, .del-btn {
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+    border-width: 0.15rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
 }
 
 /* SyncIt! */

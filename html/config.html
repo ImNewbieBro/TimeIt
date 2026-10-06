@@ -23,7 +23,7 @@
 
     <div class="main-config">
         <div class="metadata">
-            <h1 class="metadata-title">Server</h1>
+            <h1 class="metadata-title">API</h1>
             <div class="ipaddress metadata-info">
                 <span>IP Address </span> 
                 <span id="show-ip"></span>
@@ -33,7 +33,8 @@
                 <span id="show-port"></span>
             </div>
         </div>
-        <div class="settings">
+        <div class="preferences">
+            <h1 class="preferences-title">Preferences</h1>
             <div class="theme">
                 <span>Dark mode</span>
                 <label class="switch">
@@ -53,6 +54,32 @@
                 </div>
             </div>
         </div>
+        <div class="tags">
+            <h1 class="tags-title">Tags</h1>
+            <div class="main-tag">
+                <div class="add-tag">
+                    <span>Tag :</span>
+                    <input id="input-tag" type="text"
+                    placeholder="Your tag" value="">
+                </div>
+                <button class="add-btn">Add</button>
+                <button class="del-btn">Delete</button>
+
+                <div class="tags-table">
+                    <table id="show-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="check-all"></th>
+                                <th>No</th>
+                                <th>Tag Name</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <div class="sync">
             <button class="sync-btn">SyncIt!</button>
             <div class="sync-overlay">
