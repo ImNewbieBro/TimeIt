@@ -93,6 +93,9 @@ button:hover {
                  0px -1px 0 #f2f0e8,
                  0px 1px 0 #f2f0e8;
 }
+button:active {
+    transform: scale(0.95);
+}
 
 /* =============
 Navigation up top
@@ -668,7 +671,7 @@ Tags section
     bottom: 0;
     height: 0.15rem;
     background-color: #a8c66c;
-    left: -32%;
+    left: -36%;
     right: 8%;
 }
 

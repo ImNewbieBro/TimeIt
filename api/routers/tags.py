@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
+from typing import List
 
 tag = APIRouter(prefix='/api/data', tags=['Tags Data'])
 
@@ -25,10 +26,14 @@ def add_tag(tag: TagCreate):
     tag_list[next_index] = new_tag 
     return {'index': next_index, 'tag': new_tag}
 
-@tag.delete('/{tag_id}')
-def del_tag(tag_id: int):
-    if tag_id not in tag_list:
-        raise HTTPException(status_code=444, detail=f"Tag with index {tag_id} not found")
+class delRequest(BaseModel):
+    keys: List[int]
 
-    deleted_tag = tag_list.pop(tag_id)
-    return {"messages": f"{deleted_tag} deleted"}
+@tag.delete('/tag_delete')
+def del_tag(request: delRequest):
+    global tag_list
+
+    for key in request.keys:
+        if key in tag_list:
+            del tag_list[key]
+    return {'message': f"{len(request.keys)} deleted!"}

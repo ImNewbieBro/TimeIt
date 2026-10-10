@@ -182,6 +182,7 @@ addBtn.addEventListener('click', async () => {
   }
 
   inputTag.value = '';
+  fetchtagList();
 
   } catch (error) {
     console.error("Something went wrong! ", error);
@@ -198,5 +199,33 @@ if (checkAll) {
 }
 
 delBtn.addEventListener('click', async () => {
+  const checkedBoxes = document.querySelectorAll('.tag-checkbox:checked');
+  const deleteKeys = Array.from(checkedBoxes).map(box => box.getAttribute('data-id'));
   
+  if (deleteKeys.length === 0) {
+    alert('Please select at least one tag to delete');
+    return;
+  }
+
+  if (!confirm(`Are you sure you want to delete ${deleteKeys.length} tag(s)?`)) {
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/data/tag_delete', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({keys: deleteKeys})
+    });
+    if (!response.ok) throw new Error('Failed to delete tags');
+
+    alert('Tags deleted successfully!');
+    fetchtagList();
+
+  } catch (error) {
+    console.error('Error deleting tags: ', error);
+    alert('Failed to delete tags');
+  }
 })
