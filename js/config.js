@@ -3,6 +3,7 @@ const socialMedia = document.querySelectorAll('.social-media')
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchMetadataServ();
+  fetchtagList();
 });
 
 async function fetchMetadataServ () {
@@ -143,6 +144,25 @@ async function fetchAndRenderTags() {
     })
   }
 }*/
+async function fetchtagList() {
+  try {
+    const response = await fetch('/api/data/tag_list');
+    if (!response.ok) throw new Error ('Failed to load');
+
+    const data = await response.json();
+    const dataEntries = Object.entries(data); //obj to array
+    tableBody.innerHTML = dataEntries.map(([tagKey, tagName], index) => `
+      <tr>
+        <td><input type="checkbox" class="tag-checkbox" data-id="${tagKey}"></td>
+        <td>${index + 1}</td>
+        <td>${tagName}</td>
+      </tr>
+      `).join('');
+  } catch (error) {
+    console.error("Error fetching tags: ", error);
+    tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:red;">Can't load data</td></tr>`;
+  }
+}
 
 addBtn.addEventListener('click', async () => {
   const tagValue = inputTag.value.trim();
@@ -167,6 +187,15 @@ addBtn.addEventListener('click', async () => {
     console.error("Something went wrong! ", error);
   }
 });
+
+if (checkAll) {
+  checkAll.addEventListener('change', (e) => {
+    const allCheckboxes = document.querySelectorAll('.tag-checkbox');
+    allCheckboxes.forEach(checkbox => {
+      checkbox.checked = e.target.checked;
+    });
+  });
+}
 
 delBtn.addEventListener('click', async () => {
   

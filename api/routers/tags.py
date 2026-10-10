@@ -11,7 +11,7 @@ class TagCreate(BaseModel):
     tagName: str
 
 # Tested!
-@tag.get('/tag')
+@tag.get('/tag_list')
 def testing_data() :
     return tag_list
 
