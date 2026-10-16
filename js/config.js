@@ -155,7 +155,7 @@ async function fetchtagList() {
       <tr>
         <td><input type="checkbox" class="tag-checkbox" data-id="${tagKey}"></td>
         <td>${index + 1}</td>
-        <td>${tagName}</td>
+        <td>${tagName.name}</td>
       </tr>
       `).join('');
   } catch (error) {

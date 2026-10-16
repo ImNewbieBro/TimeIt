@@ -54,12 +54,43 @@
                 </div>
             </div>
         </div>
+
         <div class="tags">
             <h1 class="tags-title">Tags</h1>
             <div class="main-tag">
                 <div class="add-tag">
                     <span>Tag :</span>
                     <input id="input-tag" type="text"
+                    placeholder="Add yours" value="">
+                </div>
+                <button class="add-btn">Add</button>
+                <button class="del-btn">Delete</button>
+
+                <div class="tags-table">
+                    <table id="show-table">
+                        <thead id="table-head">
+                            <tr>
+                                <th><input type="checkbox" id="check-all"></th>
+                                <th>No</th>
+                                <th>Tag Name</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <tr>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="tags sub-tags">
+            <h1 class="tags-title sub-tags-title">Sub-Tags</h1>
+            <div class="main-tag sub-tag">
+                <div class="add-sub-tag">
+                    <span>Tag :</span>
+                    <input id="input-sub-tag" type="text"
                     placeholder="Add yours" value="">
                 </div>
                 <button class="add-btn">Add</button>
