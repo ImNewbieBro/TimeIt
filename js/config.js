@@ -1,9 +1,9 @@
 const navBtns = document.querySelectorAll('.nav-btn');
 const socialMedia = document.querySelectorAll('.social-media')
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async() => {
   fetchMetadataServ();
-  fetchtagList();
+  await fetchtagList();
 });
 
 async function fetchMetadataServ () {
@@ -124,26 +124,13 @@ document.addEventListener('click', () => {
 });
 
 
+
 const inputTag = document.querySelector('#input-tag');
 const addBtn = document.querySelector('.add-btn');
 const delBtn = document.querySelector('.del-btn');
 const tableBody = document.getElementById('table-body');
 const checkAll = document.getElementById('check-all');
 
-/*
-async function fetchAndRenderTags() {
-  try {
-    const response = await fetch('/api/data/tags');
-    if (!response.ok) throw new Error("Cannot load data");
-
-    const tags = await response.json();
-    
-    tableBody.innerHTML = '';
-    tags.forEach((tag, index) => {
-
-    })
-  }
-}*/
 async function fetchtagList() {
   try {
     const response = await fetch('/api/data/tag_list');
@@ -158,6 +145,13 @@ async function fetchtagList() {
         <td>${tagName.name}</td>
       </tr>
       `).join('');
+
+    //==== For tag selection in sub-tag ====//
+    showTags.innerHTML = dataEntries.map(([tagKey, tagName]) => `
+      <li data-value="${tagKey}">${tagName.name}</li>
+    `).join('');
+    tagSelected.textContent = "-";
+
   } catch (error) {
     console.error("Error fetching tags: ", error);
     tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:red;">Can't load data</td></tr>`;
@@ -229,3 +223,54 @@ delBtn.addEventListener('click', async () => {
     alert('Failed to delete tags');
   }
 })
+
+/* =======
+Sub-Tags Section
+====== */
+
+const subTagDropdown = document.getElementById('subTagDropdown');
+const tagSelected = subTagDropdown.querySelector('.dropdown-tag-selected');
+const showTags = subTagDropdown.querySelector('.dropdown-tag')
+
+//const defLang = localStorage.getItem('language')
+
+/*if (defLang) {
+  options.forEach(opt => opt.classList.remove('active'))
+  const targetLi = dropdown.querySelector(`.dropdown-options li[data-value="${defLang}"]`)
+  console.log(targetLi)
+  targetLi.classList.add('active')
+  console.log(targetLi.textContent)
+  selected.textContent = targetLi.textContent
+}*/
+
+
+// Dropdown Open
+tagSelected.addEventListener('click', (e) => {
+  e.stopPropagation();
+  subTagDropdown.classList.toggle('open');
+  
+  const tagOptions = subTagDropdown.querySelectorAll('.dropdown-tag li');
+  tagOptions.forEach(option => {
+  console.log(tagOptions);
+  option.addEventListener('click', function(e) {
+    e.stopPropagation();
+    
+    // Selected Lang
+    tagSelected.textContent = this.textContent;
+    
+    // Update active
+    tagOptions.forEach(opt => opt.classList.remove('active'));
+    this.classList.add('active');
+    
+    // CloseIt
+    subTagDropdown.classList.remove('open');
+  });
+});
+});
+
+
+
+// Close when click outside
+document.addEventListener('click', () => {
+  subTagDropdown.classList.remove('open');
+});
