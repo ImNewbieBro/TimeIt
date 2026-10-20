@@ -313,7 +313,7 @@ async function fetchsubTagList() {
     if(targetTag?.['sub-tags']?.length > 0) {
       subTagBody.innerHTML = targetTag['sub-tags'].map((subTagName, index) => `
       <tr>
-        <td><input type="checkbox" class="sub-tag-checkbox" data-id="${key}-${index}"></td>
+        <td><input type="checkbox" class="sub-tag-checkbox" main-tag-id="${key}" value="${subTagName}"></td>
         <td>${index + 1}</td>
         <td>${subTagName}</td>
       </tr>
@@ -342,3 +342,45 @@ if (subCheckAll) {
     });
   });
 }
+
+const subTagDelBtn = subTagTable.querySelector('.del-btn')
+
+subTagDelBtn.addEventListener('click', async () => {
+  const checkedBoxes = subTagBody.querySelectorAll('.sub-tag-checkbox:checked');
+  const deleteValues = Array.from(checkedBoxes).map(box => box.getAttribute('value'));
+  const deleteCheckbox = subTagBody.querySelector('.sub-tag-checkbox:checked');
+  const deleteMainTag = deleteCheckbox.getAttribute('main-tag-id')
+  console.log(deleteValues);
+  console.log(deleteMainTag);
+  
+  if (deleteValues.length === 0) {
+    alert('Please select at least one tag to delete');
+    return;
+  }
+
+  if (!confirm(`Are you sure you want to delete ${deleteValues.length} tag(s)?`)) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`/api/data/tags/${deleteMainTag}/subtags`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "subTags": deleteValues
+      })
+    });
+    if (!response.ok) throw new Error('Failed to delete tags');
+
+    alert('Tags deleted successfully!');
+    fetchtagList();
+    fetchsubTagList();
+    subCheckAll.checked = false;
+
+  } catch (error) {
+    console.error('Error deleting tags: ', error);
+    alert('Failed to delete tags');
+  }
+})

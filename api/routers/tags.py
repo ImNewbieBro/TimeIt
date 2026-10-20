@@ -61,5 +61,5 @@ def add_sub_tag(tag_id: int, sub_tag: subTagCreate):
 def del_sub_tag(tag_id:int, request: delSubRequest):
     if tag_id not in tag_list:
         raise HTTPException(status_code=404, detail='Cannot find main tag')
-    tag_list[tag_id]['sub-tags'] = [s for s in tag_list[tag_id]['sub-tags'] if s not in request.subTags]
+    tag_list[tag_id]['sub-tags'] = [sub for sub in tag_list[tag_id]['sub-tags'] if sub not in request.subTags]
     return {'sub-tags': tag_list[tag_id]['sub-tags']}
