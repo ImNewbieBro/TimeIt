@@ -4,6 +4,7 @@ const socialMedia = document.querySelectorAll('.social-media')
 document.addEventListener('DOMContentLoaded', async() => {
   fetchMetadataServ();
   await fetchtagList();
+  await fetchsubTagList();
 });
 
 async function fetchMetadataServ () {
@@ -86,9 +87,7 @@ const defLang = localStorage.getItem('language')
 if (defLang) {
   options.forEach(opt => opt.classList.remove('active'))
   const targetLi = dropdown.querySelector(`.dropdown-options li[data-value="${defLang}"]`)
-  console.log(targetLi)
   targetLi.classList.add('active')
-  console.log(targetLi.textContent)
   selected.textContent = targetLi.textContent
 }
 
@@ -150,7 +149,6 @@ async function fetchtagList() {
     showTags.innerHTML = dataEntries.map(([tagKey, tagName]) => `
       <li data-value="${tagKey}">${tagName.name}</li>
     `).join('');
-    tagSelected.textContent = "-";
 
   } catch (error) {
     console.error("Error fetching tags: ", error);
@@ -185,7 +183,7 @@ addBtn.addEventListener('click', async () => {
 
 if (checkAll) {
   checkAll.addEventListener('change', (e) => {
-    const allCheckboxes = document.querySelectorAll('.tag-checkbox');
+    const allCheckboxes = tableBody.querySelectorAll('.tag-checkbox');
     allCheckboxes.forEach(checkbox => {
       checkbox.checked = e.target.checked;
     });
@@ -217,6 +215,11 @@ delBtn.addEventListener('click', async () => {
 
     alert('Tags deleted successfully!');
     fetchtagList();
+    fetchsubTagList();
+    const subTags = document.querySelector('#subTagDropdown');
+    const resetDropdown = subTags.querySelector('#tagSelected');
+    resetDropdown.innerHTML = "-";
+    checkAll.checked = false;
 
   } catch (error) {
     console.error('Error deleting tags: ', error);
@@ -224,25 +227,18 @@ delBtn.addEventListener('click', async () => {
   }
 })
 
+
 /* =======
 Sub-Tags Section
 ====== */
 
+const subTagTable = document.querySelector('.sub-tag');
+const subTagInput = subTagTable.querySelector('#input-sub-tag');
 const subTagDropdown = document.getElementById('subTagDropdown');
 const tagSelected = subTagDropdown.querySelector('.dropdown-tag-selected');
-const showTags = subTagDropdown.querySelector('.dropdown-tag')
-
-//const defLang = localStorage.getItem('language')
-
-/*if (defLang) {
-  options.forEach(opt => opt.classList.remove('active'))
-  const targetLi = dropdown.querySelector(`.dropdown-options li[data-value="${defLang}"]`)
-  console.log(targetLi)
-  targetLi.classList.add('active')
-  console.log(targetLi.textContent)
-  selected.textContent = targetLi.textContent
-}*/
-
+const showTags = subTagDropdown.querySelector('.dropdown-tag');
+const subTagShow = subTagTable.querySelector('.tags-table');
+const subTagBody = subTagShow.querySelector('#table-sub-body');
 
 // Dropdown Open
 tagSelected.addEventListener('click', (e) => {
@@ -251,7 +247,6 @@ tagSelected.addEventListener('click', (e) => {
   
   const tagOptions = subTagDropdown.querySelectorAll('.dropdown-tag li');
   tagOptions.forEach(option => {
-  console.log(tagOptions);
   option.addEventListener('click', function(e) {
     e.stopPropagation();
     
@@ -261,16 +256,89 @@ tagSelected.addEventListener('click', (e) => {
     // Update active
     tagOptions.forEach(opt => opt.classList.remove('active'));
     this.classList.add('active');
+
+    const dataVal = this.getAttribute('data-value');
+    tagSelected.setAttribute('data-value', dataVal);
     
     // CloseIt
+    fetchsubTagList();
     subTagDropdown.classList.remove('open');
+    });
   });
 });
-});
-
-
 
 // Close when click outside
 document.addEventListener('click', () => {
   subTagDropdown.classList.remove('open');
 });
+
+const subTagAddBtn = subTagTable.querySelector('.add-btn')
+
+subTagAddBtn.addEventListener('click', async () => {
+  const tagValue = subTagInput.value.trim();
+  if (tagValue === '') return alert("Can't be empty");
+
+  const mainTag = tagSelected.getAttribute('data-value');
+
+  try {
+    const response = await fetch(`/api/data/tags/${mainTag}/subtags`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        subTagName: tagValue
+      })
+    });
+
+  if (!response.ok) {
+    throw new Error(`Failed: ${response.status}`);
+  }
+
+  subTagInput.value = '';
+  fetchsubTagList();
+
+  } catch (error) {
+    console.error("Something went wrong! ", error);
+  }
+});
+
+async function fetchsubTagList() {
+  try {
+    const response = await fetch('/api/data/tag_list');
+    if (!response.ok) throw new Error ('Failed to load');
+
+    const data = await response.json();
+    const key = tagSelected.getAttribute('data-value');
+    const targetTag = data[key];
+
+    if(targetTag?.['sub-tags']?.length > 0) {
+      subTagBody.innerHTML = targetTag['sub-tags'].map((subTagName, index) => `
+      <tr>
+        <td><input type="checkbox" class="sub-tag-checkbox" data-id="${key}-${index}"></td>
+        <td>${index + 1}</td>
+        <td>${subTagName}</td>
+      </tr>
+      `).join('');
+    } else {
+      subTagBody.innerHTML = `
+      <tr>
+        <td colspan="3" style="text-align: center;"> There's no sub-tag registered. </td>
+      </tr>
+      `;
+    }
+
+  } catch (error) {
+    console.error("Error fetching tags: ", error);
+    tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:red;">Can't load data</td></tr>`;
+  }
+}
+
+const subCheckAll = subTagShow.querySelector('#check-all')
+
+if (subCheckAll) {
+  subCheckAll.addEventListener('change', (e) => {
+    const allCheckboxes = subTagBody.querySelectorAll('.sub-tag-checkbox');
+    allCheckboxes.forEach(checkbox => {
+      checkbox.checked = e.target.checked;
+    });
+  });
+}

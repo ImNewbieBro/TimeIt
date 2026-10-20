@@ -547,7 +547,7 @@ input:checked + .slider:before {
 }
 
 .dropdown-options li, .dropdown-tag li {
-    padding: 8px 12px;
+    padding: 4px 8px;
     color: var(--text-color);
     cursor: pointer;
     transition: background-color 0.2s;
@@ -602,7 +602,7 @@ Tags section
     width: 100%;
 }
 
-#input-tag {
+#input-tag, #input-sub-tag {
     height: 1.5rem;
     width: 10rem;
     padding: 0.5rem;
@@ -615,7 +615,7 @@ Tags section
     transition: all 0.2s ease-in-out;
     user-select: none;
 }
-#input-tag:focus {
+#input-tag:focus, #input-sub-tag:focus {
     outline: none;
     border-color: #a8c66c;
 }
@@ -667,7 +667,8 @@ Tags section
 
 
 #table-head th,
-#table-body td {
+#table-body td,
+#table-sub-body td {
     position: relative;
     padding: 0.3rem 0rem 0.3rem 0rem;
 }
@@ -684,7 +685,9 @@ Tags section
 #table-head th:nth-child(2)::before,
 #table-head th:nth-child(3)::before,
 #table-body td:nth-child(2)::before,
-#table-body td:nth-child(3)::before {
+#table-body td:nth-child(3)::before,
+#table-sub-body td:nth-child(2)::before,
+#table-sub-body td:nth-child(3)::before {
     content: "";
     position: absolute;
     left: 0;
@@ -696,6 +699,23 @@ Tags section
 
 .tag-checkbox, #check-all {
     cursor: pointer;
+}
+
+.sub-tag-dropdown {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1rem;
+    gap: 1rem;
+    color: #f2f0e8;
+    text-shadow: -1px -1px 0 #3a3a38, 
+                1px -1px 0 #3a3a38,
+                -1px 1px 0 #3a3a38,
+                1px 1px 0 #3a3a38,
+                -1px 0px 0 #3a3a38,
+                1px 0px 0 #3a3a38,
+                0px -1px 0 #3a3a38,
+                0px 1px 0 #3a3a38;
 }
 
 .sub-tag {
@@ -710,7 +730,7 @@ Tags section
     text-align: left;
     align-items: center;
     gap: 0.4rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: #f2f0e8;
     text-shadow: -1px -1px 0 #3a3a38, 
                 1px -1px 0 #3a3a38,
@@ -723,9 +743,13 @@ Tags section
 }
 
 .custom-tag-dropdown {
-    width: 125px;
-    font-size: 1rem;
+    width: 200px;
+    font-size: 1.3rem;
     user-select: none;
+}
+
+#input-sub-tag {
+    max-width: 140px;
 }
 
 /* SyncIt! */

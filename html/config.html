@@ -87,16 +87,20 @@
 
         <div class="tags sub-tags">
             <h1 class="tags-title sub-tags-title">Sub-Tags</h1>
+            <div class="sub-tag-dropdown">
+                <span>Main Tag : </span>
+                <div class="custom-tag-dropdown" id="subTagDropdown">
+                    <div class="dropdown-tag-selected" id="tagSelected">-</div>
+                    <ul class="dropdown-tag">
+                    </ul>
+                </div>
+            </div>
             <div class="sub-tag">
                 <div class="sel-main-tag">
                     <span>Sub-Tag : </span>
-                    <div class="custom-tag-dropdown" id="subTagDropdown">
-                        <div class="dropdown-tag-selected" id="tagSelected">-</div>
-                        <ul class="dropdown-tag">
-
-                        </ul>
+                    <input id="input-sub-tag" type="text"
+                    placeholder="Add yours" value="">
                 </div>
-            </div>
                 <button class="add-btn">Add</button>
                 <button class="del-btn">Delete</button>
 
@@ -109,7 +113,7 @@
                                 <th>Tag Name</th>
                             </tr>
                         </thead>
-                        <tbody id="table-body">
+                        <tbody id="table-sub-body">
                             <tr>
                                 
                             </tr>
