@@ -2,3 +2,5 @@ ARc/
 .idea/
 .vscode/
 __pycache__
+iot-firmware/.pio/
+iot-firmware/.vscode/
