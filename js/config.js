@@ -58,22 +58,30 @@ socialMedia.forEach(button => {
 
 // Experiment
 const toggleButton = document.getElementById('darkModeToggle');
+const rootHtml = document.documentElement;
 
 // Checks local state
-if (localStorage.getItem('theme') === 'light') {
-  document.body.classList.add('light-theme');
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+  rootHtml.style.colorScheme = 'light';
   toggleButton.checked = false;
+} else if (savedTheme == 'dark') {
+  rootHtml.style.colorScheme = 'dark';
+  toggleButton.checked = true;
+} else {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  toggleButton.checked = prefersDark;
 }
 
 // Button is clicked
 toggleButton.addEventListener('change', () => {
   if (toggleButton.checked) {
     // turn ON & save state
-    document.body.classList.remove('light-theme');
+    rootHtml.style.colorScheme = 'dark';
     localStorage.setItem('theme', 'dark');
   } else {
     // turn OFF & save state
-    document.body.classList.add('light-theme');
+    rootHtml.style.colorScheme = 'light';
     localStorage.setItem('theme', 'light');
   }
 });
