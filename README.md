@@ -1,0 +1,3 @@
+**Note** : The development of this project is temporarily paused due to **upcoming major exam preparation**. even if this project is one of my top priorities, but i still need to achieve a great result on this exam due to its significant, potentially life-changing impact.  
+  
+**However**, i will still try to make NTP working since it is a great way to collect an actual data from my study sessions to test if the workflow are correct and if there is any flaws.
